@@ -1,6 +1,6 @@
 Memory Game
 
-O objetivo deste projeto é construir um jogo da velha com 3 níveis de desafio. O usuário vai selecionar o nível entre easy, medium e hard. Após isto, vai ser criado o tabuleiro com todos os itens para ser clicados na tela do usuário.
+O objetivo deste projeto é construir um jogo da memória com 3 níveis de desafio. O usuário vai selecionar o nível entre easy, medium e hard. Após isto, vai ser criado o tabuleiro com todos os itens para ser clicados na tela do usuário.
 
 O game esta sendo criado dentro de um objeto, e vou exportar as funcionalidades no meu HTML.
 
