@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(11, 190, 11, 0.63);
+}
+
+.memory-game{
+    width: 80vw;
+    margin: 0 auto 0 auto;
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    
+}
+
+.memory-card {
+    margin: 4px;
+    width: 100px;
+    height: 100px;
+    position: relative; 
+    transform: scale(1);
+}
+
+.memory-card:active{
+    transform: scale(0.9);
+    transition: transform .2s;
+}
+
+.front-face, .back-face{
+    position: absolute;
+}
+
+
+
