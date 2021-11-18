@@ -1,12 +1,28 @@
-Memory Game
+#Memory Game
+## 🚀 O projeto
 
-O objetivo deste projeto é construir um jogo da memória com 3 níveis de desafio. O usuário vai selecionar o nível entre easy, medium e hard. Após isto, vai ser criado o tabuleiro com todos os itens para ser clicados na tela do usuário.
+<img src="https://raw.githubusercontent.com/vitorrsousaa/Memory-game/main/MemoryGame-Logo.png" alt="memory-game-logo"/>
 
-O game esta sendo criado dentro de um objeto, e vou exportar as funcionalidades no meu HTML.
+<p>
+O objetivo deste projeto é construir um jogo da memória com 3 níveis de desafio. O usuário vai selecionar o nível entre easy, medium e hard. Após isto, vai ser criado o tabuleiro com todos os itens para ser clicados na tela do usuário. O game esta sendo criado dentro de um objeto, e vou exportar as funcionalidades no meu HTML.
 
 Tenho como objetivo trabalhar com funcionalidades aleatórias, para permitir que o usuário tenha a experiencia de sempre encontrar um tabuleiro diferente ao iniciar o game.
+  
+Todas as funçoes de aleatoriedades foram criadas utilizando a biblioteca Math.
+</p>
+## 📫 Contribuindo para Convert-Coin
+1. Bifurque este repositório.
+2. Crie um branch: `git checkout -b <nome_branch>`.
+3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
+4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
+5. Crie a solicitação de pull.
 
-Documentário das funcões:
+Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+## 📝 Documentário das funções
+
+#Version 1.0
+
 Function init:
 - Retorna para dentro do objeto a div onde vai ocorrer o game, para que possa ser feito as alterações em JS
 
@@ -35,7 +51,7 @@ Function duplicate:
 Function writeBoard:
 - Adiciona os Id's em cada posição da matriz de forma aleatória
 
-Version 2.0
+#Version 2.0
 
 Criei a funcionalidade para acrescentar todas as imagens na nossa página HTML.
 
@@ -58,7 +74,7 @@ Function dificulty:
 Function draw:
 - Exclui a function draw, pois a function createBoard tem a mesma funcionalidade;
 
-Version 3.0
+#Version 3.0
 
 Adicionar a funcionalidade para acrescentar a imagem que vai ser exibida no back-card do game.
 
