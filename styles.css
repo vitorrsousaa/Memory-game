@@ -3,20 +3,62 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+/* GLOBAL */
 body {
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(11, 190, 11, 0.63);
+    width: 98vw;
+    background: #43aa8b; 
+    background: -webkit-linear-gradient(to right, #43aa8b, #38ef7d); 
+    background: linear-gradient(to right, #43aa8b, #38ef7d); 
+    
 }
 
+h1 {
+    font-family: 'Bangers', cursive;
+    letter-spacing: 5px;
+    color: white;
+    font-size: 90px;
+    margin-bottom: 60px;
+}
+
+button {
+    width: 170px;
+    height: 42px;
+    font: 20px 'Balsamiq Sans', cursive;
+    cursor: pointer;
+    color: white;
+    background-color: #4d908e;
+    border: solid 3px;
+    border-radius: 10px;
+}
+button:hover {
+    background-color: white;
+    color: #4d908e;
+    border-color: white;
+}
+/* CSS Selection */
+#selection-game-container{
+    height: 98vh;
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+}
+.btn-selection {
+    margin-right: 40px;
+}
+
+/* CSS - Game */
+.memory-game-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .memory-game{
     width: 80vw;
-    margin: 0 auto 0 auto;
+    margin: auto;
     display: grid;
-    grid-template-columns: auto;
     justify-content: center;
-    
 }
 
 .memory-card {
@@ -34,7 +76,24 @@ body {
 
 .front-face, .back-face{
     position: absolute;
+    border-radius: 10px;
 }
+
+.match-card {
+    margin: 4px;
+    width: 100px;
+    height: 100px;
+    position: relative; 
+    transform: scale(1);
+}
+
+/* END GAME */
+.button-end-container {
+    display: flex;
+    justify-content: center;
+}
+
+
 
 
 

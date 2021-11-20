@@ -4,22 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="styles.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    
     <title>Memory Game</title>
 </head>
+
 <body>
-    <section id="selection"> 
-        <div id="text-select">
-            Selecionar dificuldade:
+    <section id="selection-game-container" style="display: flex;"> 
+        <div class="text-select-container">
+            <h1 class="text-select">Selecionar dificuldade :</h1>
         </div>
-        <div id="btn" > 
-            <button id="btn-easy" onclick="memoryGame.dificulty('easy')" >Easy</button>
-            <button id="btn-medium" onclick="memoryGame.dificulty('medium')" >Medim</button>
-            <button id="btn-hard" onclick="memoryGame.dificulty('hard')" >hard</button>
+        <div id="btn-selection-container" > 
+            <button class="btn-selection" id="btn-easy" onclick="memoryGame.dificulty('easy')" >Easy</button>
+            <button class="btn-selection" id="btn-medium" onclick="memoryGame.dificulty('medium')" >Medium</button>
+            <button class="btn-selection" id="btn-hard" onclick="memoryGame.dificulty('hard')" >Hard</button>
         </div>
     </section>
 
-    <section class="memory-game" style="display: none;">
-        
+    <section class="memory-game-container">
+        <section class="memory-game" style="display: none;"></section>
     </section>
 
 <script src="index.js" type="text/javascript" ></script>

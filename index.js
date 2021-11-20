@@ -5,11 +5,11 @@ const memoryGame = {
         {
         id:1,
         name:'Adobe After Effects',
-        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-plain.svg"/>'
+        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg"/>'
         }, {
         id:2,
         name: 'AngularJs',
-        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg" />'
+        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" />'
         }, {
         id: 3,
         name: 'Canva',
@@ -17,7 +17,7 @@ const memoryGame = {
         },{
         id: 4,
         name: 'CSS',
-        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain-wordmark.svg" />'
+        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" />'
         },{
         id: 5,
         name: 'GitHub',
@@ -25,15 +25,15 @@ const memoryGame = {
         },{
         id: 6,
         name:'HTML',
-        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain-wordmark.svg" />'
+        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" />'
         },{
         id: 7,
         name: 'Typescript',
-        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg" />'
+        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />'
         },{
         id: 8,
         name: 'Python',
-        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain-wordmark.svg" />'
+        img: '<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />'
         },{
         id: 9,
         name: 'WordPress',
@@ -61,7 +61,7 @@ const memoryGame = {
         },{
         id:15,
         name:'Facebook',
-        img:'<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-plain.svg" />'
+        img:'<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" />'
         },{
         id:16,
         name:'DevIcon',
@@ -77,7 +77,7 @@ const memoryGame = {
         },{
         id:19,
         name:'Android',
-        img:'<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-plain-wordmark.svg" />'
+        img:'<img class="front-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" />'
         },{
         id:20,
         name:'Windows',
@@ -87,11 +87,11 @@ const memoryGame = {
     idIcons:[],
     container_element: null,
     minId: 1, maxId: 20, 
-    line: null, column: null, figures: null,
+    line: null, column: null, figures: null, gameInit: false,
     iconsBackFace:[{
         id:1, 
         name:'JavaScript', 
-        img:'<img class="back-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />'
+        img:'<img class="back-face" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />'
     }],
 
     init: function(container){
@@ -139,18 +139,19 @@ const memoryGame = {
             this.start(this.column, this.figures)
         }
 
-        document.getElementById('selection').style.display = "none"
+        document.getElementById('selection-game-container').style.display = "none"
         this.container_element.style.display = "grid"
         
     },
 
     start: function(columnGames, numberOfFigures){
+        this.gameInit = true
         this.displayGrid(columnGames)
         this.createListOfId(numberOfFigures)
         this.create()
         this.writeBoard()
         this.createBoard()
-        this.frontCardInvisible()
+        this.addRotateCard()
     },
 
     displayGrid: function(columnGames){
@@ -205,21 +206,92 @@ const memoryGame = {
         
     },
 
-    addRotateCard: function() {
-        const cardWithoutEvent = document.querySelectorAll('.memory-card')
-        console.log(cardWithoutEvent)
-    },
-
     frontCardInvisible: function() {
         const frontCards = document.querySelectorAll('.front-face')
         frontCards.forEach(card => card.style.display = "none")
-        this.addRotateCard()
+    },
+
+    backCardVisible: function() {
+        const backCards = document.querySelectorAll('.back-face')
+        backCards.forEach(card => card.style.display = "block")
+    },
+
+    addRotateCard: function() {
+        this.backCardVisible()
+        this.frontCardInvisible()
+        const cards = document.querySelectorAll('.memory-card')
+        cards.forEach(element => element.addEventListener('click',
+            function(element) {
+                memoryGame.flipCards(element)
+            }
+        ))     
+    },
+    
+    flipCards: function(card){
+        if(card.path[1].children[1].style.display === "block") {
+            card.path[1].children[1].style.display = "none"
+            card.path[1].children[0].style.display = "block"
+
+            card.path[1].classList.add('flip')
+            this.matchCards()
+        } 
+    },
+    
+    matchCards:function(){
+        const cardsFlipped = document.querySelectorAll('.memory-card.flip')
+
+        if(cardsFlipped.length == 2) {
+            if(cardsFlipped[0].id === cardsFlipped[1].id) {
+                setTimeout(function() {
+                    cardsFlipped.forEach(card => card.classList.remove('flip'))
+                    cardsFlipped[0].children[1].removeAttribute('src')
+                    cardsFlipped[1].children[1].removeAttribute('src')
+
+                    cardsFlipped.forEach(card => card.classList.add('matched'))
+                    const cardsMatched = document.querySelectorAll('.memory-card.matched')
+                    if(cardsMatched.length == (memoryGame.figures)*2){
+                        memoryGame.createButtonEndGame()
+                    }
+                }, 600)
+
+            } else {
+                setTimeout(function() {
+                    cardsFlipped[0].children[0].style.display = "none"
+                    cardsFlipped[0].children[1].style.display = "block"
+                
+                    cardsFlipped[1].children[0].style.display = "none"
+                    cardsFlipped[1].children[1].style.display = "block"
+                }, 600)
+
+                cardsFlipped[0].classList.remove('flip')
+                cardsFlipped[1].classList.remove('flip')  
+            }
+        } 
+    },
+
+    createButtonEndGame: function() {
+        const buttonEndGame = 
+        `
+        <section class="end-game-container">
+            <div class="text-end-container"> 
+                <h1 class="text-end">Você Venceu! </h1>
+            </div>
+            <div class="button-end-container">
+                <button class="button-end" onclick="memoryGame.gameEnd()">Reset</button> 
+        </section>
+        `
+
+        this.container_element.innerHTML = buttonEndGame
+    },
+    gameEnd: function (){
+        if(memoryGame.gameInit) {
+            this.boardGame = []
+            this.idIcons = []
+            document.getElementById('selection-game-container').style.display = 'flex'
+            this.container_element.style.display = 'none'
+            memoryGame.gameInit = false
+        }
     }
-
-    
-    
-
-    
-
-        
 }
+
+
