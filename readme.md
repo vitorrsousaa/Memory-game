@@ -78,4 +78,61 @@ Function draw:
 
 Adicionar a funcionalidade para acrescentar a imagem que vai ser exibida no back-card do game.
 
-Sobrepor ambas as imagens
+#Version 4.0
+
+Documentário das funções:
+
+Function addRotateCard:
+- Obtém todas as 'div' que contém o nosso card, e adiciona um evento do tipo click em cada div. Este evento click chama como callback uma function que recebe como parametro a div que foi clicada.
+
+
+Function frontCardInvisible:
+- Obtém todos os frontCard através do método document.querySelectorAll, e altera do display de todos os elementos para none através do método forEach
+
+Function backCardVisible:
+- Obtém todos os backCard, e altera o display de todos os elementos para block através do método forEach
+
+Function flipCards:
+- Verifica qual o display do objeto atual que foi clicado através de uma condicional, e realiza a alteração do display conforme necessário.
+
+Function matchCards:
+- Verifica quantos card foram girados, caso tenha dois cards girados, ele verifica o valor de cada um e compara, se foram iguais, mantém os dois intactos, se não, realiza um giro em cada uma.
+
+#Version 5.0 
+
+Documentário das funções:
+
+Function AddRotateCard:
+- Chama a frontCardInvisible;
+- Chama a backCardVisible;
+- Torna o backCard visivel para o usuário, e o front card invisível
+- Obtém todos os card através do método document.querySelectorAll, e adicionar um eventListener através do método forEach;
+- O evento adicionado é uma function anonima que recebe o próprio card como parametro, e chama a function flipCard passando esse elemento como parametro;
+
+Function flipCard:
+- Adiciona a class do card que foi clicado a string 'flip';
+- Remove a class do card que foi clicado caso seja a front card a string 'flip';
+- Chama a function matchCard nas duas condicionais;
+
+#Version 6.0
+
+Function flipCard:
+- Realiza apenas a primeira condição, para que seja feito o giro do card apenas quando o usuário clicar na back face;
+
+Function matchCard:
+- Adiciona a class matched nos cards selecionados iguais;
+- Confere se a quantidade de cards com a class matched é igual ao dobro de figuras;
+- Chama a function createButtonEndGame;
+
+Function start:
+- Altera o valor da chave boolena para true;
+
+Function createButtonEndGame:
+- Adiciona uma constante pré-determinada no nosso elemento;
+- Esta constante apresenta um texto e um button para o usuário;
+- Este button chama a function gameEnd;
+
+Function gameEnd:
+- Zera os elementos necessários para iniciar o game;
+- Altera a variável booleana para false;
+- Altera o display do button para iniciar o game;
